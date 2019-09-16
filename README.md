@@ -27,3 +27,17 @@ public function deleteMyDocment(DocumentManager $dm, Request $request, MultiCasc
 # Notes
 
 This is only has limited testing with storAs=id only and rudimentary error checking. It may very well work for all forms of storeAs. The overhead associated with it is unknown ATM. There may be more elegant ways to accomplish this but I couldn't find it. It's a blunt force instrument ATM -- it doesn't care whether an association is unidirectional or bidirectional and would interrupt any orphan removal preferences as-is I think.
+
+# Remove functions
+
+Remove functions in classes should simply remove the reference or embedded document.
+
+Example:
+
+```
+public function removeMyDocument(MyDocument $myDocument)
+{
+    // Remove the document from the myDocuments collection
+    $this->myDocuments->removeElement($myDocument);
+}
+```
